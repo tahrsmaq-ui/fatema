@@ -85,7 +85,7 @@
 <!-- حاوية المفاجأة (مخفية تلقائياً) -->
 <div id="hidden-section" style="display: none; margin-top: 20px;">
     <h2>هل تقبلين أن تكوني حبيبتي؟</h2>
-    <button onclick="alert('أنا أسعد شخص في العالم!')">نعم</button>
+<button id="yes-btn">نعم</button>
     <button id="no-btn" style="position: relative;">لا</button>
 </div>
     </div>
@@ -113,6 +113,15 @@ noBtn.addEventListener('mouseover', () => {
     noBtn.style.position = 'fixed';
     noBtn.style.left = ${x}px;
     noBtn.style.top = ${y}px;
+});
+   const yesBtn = document.getElementById('yes-btn');
+
+yesBtn.addEventListener('click', () => {
+    // هذا الجزء يغير شكل الحاوية ليظهر القلب والكلمة
+    document.getElementById('hidden-section').innerHTML = 
+        <div style="font-size: 80px;">❤️</div>
+        <h1 style="color: #e91e63;">أحبك!</h1>
+    ;
 });
     </script>
 </body>
