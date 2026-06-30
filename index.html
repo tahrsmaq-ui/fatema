@@ -2,22 +2,22 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>من عبود إلى دكتورتي فاتن</title>
+    <title>مفاجأة</title>
     <style>
-        body { margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #fce4ec, #f8bbd0); font-family: 'Segoe UI', sans-serif; text-align: center; }
-        .card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
-        .btn { background: #d81b60; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-size: 1rem; margin: 10px; cursor: pointer; transition: 0.3s; }
-        #hidden-content { display: none; margin-top: 20px; }
+        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #fce4ec, #f8bbd0); font-family: sans-serif; text-align: center; }
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 500px; width: 90%; }
+        .btn { background: #d81b60; color: white; border: none; padding: 15px 30px; border-radius: 25px; cursor: pointer; font-size: 18px; margin: 10px; }
+        #hidden-part { display: none; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<div class="card" id="card">
-    <button class="btn" id="reveal-btn">اضغطي هنا للمفاجأة</button>
+<div class="card" id="main-card">
+    <button class="btn" id="btn-reveal">اضغطي هنا للمفاجأة</button>
 
-    <div id="hidden-content">
-        <p style="font-size: 1.2rem; line-height: 1.6; color: #555;">
-            (ضع نصك الطويل هنا)
+    <div id="hidden-part">
+        <p style="font-size: 1.2rem; text-align: right; color: #333;">
+            هنا تضع نصك الطويل الذي تريده أن يظهر...
         </p>
         <h2 style="color: #d81b60;">هل تصبحين حبيبتي؟</h2>
         <button class="btn" id="yes-btn">نعم</button>
@@ -26,25 +26,28 @@
 </div>
 
 <script>
-    const revealBtn = document.getElementById('reveal-btn');
-    const hiddenContent = document.getElementById('hidden-content');
+    const btnReveal = document.getElementById('btn-reveal');
+    const hiddenPart = document.getElementById('hidden-part');
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
-    const card = document.getElementById('card');
+    const mainCard = document.getElementById('main-card');
 
-    revealBtn.addEventListener('click', () => {
-        revealBtn.style.display = 'none';
-        hiddenContent.style.display = 'block';
+    // إظهار النص عند الضغط
+    btnReveal.addEventListener('click', () => {
+        btnReveal.style.display = 'none';
+        hiddenPart.style.display = 'block';
     });
 
+    // هروب زر لا
     noBtn.addEventListener('mouseover', () => {
         noBtn.style.position = 'fixed';
         noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
         noBtn.style.top = Math.random() * (window.innerHeight - 100) + 'px';
     });
 
+    // عند الضغط على نعم
     yesBtn.addEventListener('click', () => {
-        card.innerHTML = <div style="font-size: 80px;">❤️</div><h1 style="color: #d81b60;">أحبك!</h1>;
+        mainCard.innerHTML = '<h1 style="color: #d81b60;">أحبك! ❤️</h1>';
     });
 </script>
 
