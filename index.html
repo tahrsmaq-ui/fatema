@@ -6,49 +6,56 @@
     <style>
         body { margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #fce4ec, #f8bbd0); font-family: 'Segoe UI', sans-serif; text-align: center; }
         .card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; }
-        .btn { background: #d81b60; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-size: 1rem; margin-top: 20px; cursor: pointer; }
-        #hidden-section { display: none; margin-top: 20px; }
+        .btn { background: #d81b60; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-size: 1rem; margin: 10px; cursor: pointer; }
+        #page2, #page3 { display: none; }
     </style>
 </head>
 <body>
 
 <div class="card" id="card">
-    <!-- النص الخاص بك -->
-    <div id="text-section">
-        <p>لا اعرف كيف ابدا، فالكلمات في حضرتكم تغدو قصاصات ورق مبعثرة... (ضع باقي نصك هنا)</p>
-        <button class="btn" id="reveal-btn">اضغطي هنا للمفاجأة</button>
-   <P>aaaaa</P>
+    <!-- الشاشة 1: النص -->
+    <div id="page1">
+        <p style="font-size: 1.2rem; line-height: 1.6;">
+            هنا تضع نصك الطويل جداً الذي تريدها أن تقرأه... (ضع نصك هنا)
+        </p>
+        <button class="btn" id="go-to-question">اضغطي هنا للمفاجأة</button>
     </div>
 
-    <!-- الجزء المخفي -->
-    <div id="hidden-section">
-        <h2>هل تقبلين أن تكوني حبيبتي؟</h2>
+    <!-- الشاشة 2: السؤال -->
+    <div id="page2">
+        <h2 style="color: #d81b60;">هل تصبحين حبيبتي؟</h2>
         <button class="btn" id="yes-btn">نعم</button>
         <button class="btn" id="no-btn">لا</button>
+    </div>
+
+    <!-- الشاشة 3: النتيجة -->
+    <div id="page3">
+        <div id="result-content" style="font-size: 80px;"></div>
     </div>
 </div>
 
 <script>
-    const revealBtn = document.getElementById('reveal-btn');
-    const textSection = document.getElementById('text-section');
-    const hiddenSection = document.getElementById('hidden-section');
-    const noBtn = document.getElementById('no-btn');
-    const yesBtn = document.getElementById('yes-btn');
-    const card = document.getElementById('card');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+    const result = document.getElementById('result-content');
 
-    revealBtn.addEventListener('click', () => {
-        textSection.style.display = 'none';
-        hiddenSection.style.display = 'block';
+    // الانتقال من النص للسؤال
+    document.getElementById('go-to-question').addEventListener('click', () => {
+        page1.style.display = 'none';
+        page2.style.display = 'block';
     });
 
-    noBtn.addEventListener('mouseover', () => {
-        noBtn.style.position = 'fixed';
-        noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-        noBtn.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+    // عند الضغط على نعم
+    document.getElementById('yes-btn').addEventListener('click', () => {
+        page2.style.display = 'none';
+        page3.style.display = 'block';
+        result.innerHTML = '❤️<h1 style="color: #d81b60;">أحبك!</h1>';
     });
 
-    yesBtn.addEventListener('click', () => {
-        card.innerHTML = <div style="font-size: 80px;">❤️</div><h1 style="color: #d81b60;">أحبك!</h1>;
+    // عند الضغط على لا
+    document.getElementById('no-btn').addEventListener('click', () => {
+        alert("شكراً");
     });
 </script>
 
