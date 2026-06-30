@@ -49,7 +49,11 @@
             margin-top: 20px;
             font-weight: bold;
             color: #880e4f;
-        }
+       }
+        #no-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -72,6 +76,18 @@
 أحبُّكِ رغم كل الأبواب الموصدة، وأحبُّكِ لأنكِ تستحقين أن تُحبي بصدقٍ يُنسيكِ لماذا كنتِ تخافين أصلاً.
 **أنا هنا، بكلِّ ما أوتيتُ من حُبٍّ وصبر</p> 
         </div>
+  <!-- النص الأول -->
+<div id="first-section">
+    <p>هنا تضع النص الخاص بك الذي يقرأه الشخص...</p>
+    <button id="reveal-btn">اضغط هنا للمفاجأة</button>
+</div>
+
+<!-- حاوية المفاجأة (مخفية تلقائياً) -->
+<div id="hidden-section" style="display: none; margin-top: 20px;">
+    <h2>هل تقبلين أن تكوني حبيبتي؟</h2>
+    <button onclick="alert('أنا أسعد شخص في العالم!')">نعم</button>
+    <button id="no-btn" style="position: relative;">لا</button>
+</div>
     </div>
 
     <script>
@@ -79,6 +95,25 @@
             document.getElementById('message').style.display = 'block';
             alert("i love you forever ✨");
         }
+        const revealBtn = document.getElementById('reveal-btn');
+const hiddenSection = document.getElementById('hidden-section');
+const noBtn = document.getElementById('no-btn');
+
+// إظهار المفاجأة عند الضغط
+revealBtn.addEventListener('click', () => {
+    revealBtn.style.display = 'none';
+    hiddenSection.style.display = 'block';
+});
+
+// هروب زر "لا" عند اقتراب الماوس
+noBtn.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = ${x}px;
+    noBtn.style.top = ${y}px;
+});
     </script>
 </body>
 </html>
